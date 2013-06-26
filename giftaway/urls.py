@@ -9,6 +9,8 @@ gift_resource = GiftResource()
 
 urlpatterns = patterns('',
     url(r'^$', 'giftplanner.views.home', name='home'),
+    url(r'^login/$', 'django.contrib.auth.views.login',name='my_login'),
+    url(r'^logout/$', 'django.contrib.auth.views.logout',name='my_logout'),
     # url(r'^giftplanner/', include('giftplanner.urls')),
     # Examples:
     # url(r'^$', 'giftaway.views.home', name='home'),

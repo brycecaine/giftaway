@@ -1,2 +1,188 @@
-<h1>Site still being wrapped...</h1>
-<p>Future home of the awesomest gifting app ever!</p>
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Giftaway</title>
+
+<link rel="stylesheet" href="{% static "css/normalize.css" %}" />
+<link rel="stylesheet" href="{% static "css/foundation.css" %}" />
+
+<script src="{% static "js/vendor/custom.modernizr.js" %}"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<nav class="top-bar">
+	<ul class="title-area">
+	<li class="name">
+		<h1><a href="/">Giftaway</a></h1>
+	</li>
+	<li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	</ul>
+	<section class="top-bar-section">
+		<ul class="right">
+		<li class="divider"></li>
+		{% if user.is_authenticated %}
+			<li><a href="#" data-reveal-id="?">{{ user }}</a></li>
+			<li class="divider"></li>
+			<li><a href="/logout?next=/" data-reveal-id="?">Logout</a></li>
+		{% else %}
+			<li><a href="/login?next=/" data-reveal-id="logInModal">Log In</a></li>
+			<li class="divider"></li>
+			<li><a href="#" data-reveal-id="signUpModal">Sign Up</a></li>
+		{% endif %}
+		<li class="divider"></li>
+		</ul>
+	</section>
+</nav>
+
+<div id="logInModal" class="reveal-modal small">
+	<h2>Log In</h2>
+	<hr>
+	<form>
+		<div class="row collapse">
+			<div class="large-2 columns">
+				<label class="inline">Username</label>
+			</div>
+			<div class="large-10 columns">
+				<input type="text" placeholder="Username">
+			</div>
+		</div>
+			
+		<div class="row collapse">
+			<div class="large-2 columns">
+				<label class="inline">Password</label>
+			</div>
+			<div class="large-10 columns">
+				<input type="password" placeholder="Password">
+				
+			</div>
+		</div>
+		<div class="row collapse">
+			<div class="large-10 large-offset-2 columns">
+				<a href="#" class="left">Forgot password?</a>
+				<button type="submit" class="button small right">Submit</button>
+			</div>
+		</div>
+	</form>
+	<hr>
+	
+	<div class="row collapse">
+		<div class="large-12 columns">
+			<p>Need to sign up?</p>
+			<p><a href="#" data-reveal-id="signUpModal" class="button small">Sign Up</a></p>
+		</div>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="signUpModal" class="reveal-modal small">
+	<h2>Sign Up</h2>
+	<hr>
+	<form>
+		<div class="row collapse">
+			<div class="large-2 columns">
+				<label class="inline">Email</label>
+			</div>
+			<div class="large-10 columns">
+				<input type="text" placeholder="Email">
+			</div>
+		</div>
+		
+		<div class="row collapse">
+			<div class="large-2 columns">
+				<label class="inline">Password</label>
+			</div>
+			<div class="large-10 columns">
+				<input type="password" placeholder="Password">
+			</div>
+		</div>
+		<div class="row collapse">
+			<div class="large-2 columns">
+				<label class="inline">Repeat Password</label>
+			</div>
+			<div class="large-10 columns">
+				<input type="password" placeholder="Repeat Password">
+			</div>
+		</div>
+		<button type="submit" class="button small right">Submit</button>
+	</form>
+	<hr>
+	<div class="row collapse">
+		<div class="large-12 columns">
+			<p>Already signed up?</p>
+			<a href="#" data-reveal-id="logInModal" class="button small">Log In</a>
+		</div>
+	</div>
+	<a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div class="row">
+	<div class="large-12 columns panel">
+		<h2 class="header">Giftaway</h2>
+		<h5 class="subheader">The awesomest gifting app ever!</h5>
+	</div>
+</div>
+
+<hr>
+
+<div class="row">
+	<div class="large-3 columns">
+		<ul class="side-nav">
+		<li class="active"><a href="#">People</a></li>
+		<li><a href="#">Gift History</a></li>
+		<li><a href="#">Occasions</a></li>
+		</ul>
+	</div>
+	
+	<div class="large-9 columns">
+	
+		<div class="row panel giftEntry">
+			<div class="small-2 columns date">
+				<span class="month">Aug</span>
+				<span class="day">20</span>
+			</div>
+			<div class="small-10 columns content">
+				<a href="#" class="tiny button right">Plan Gifts</a>
+				<h3 class="title">Kathy's Birthday</h3>
+				<p class="comment">Don't forget... late gifts make people cry. :)</p>
+				
+			</div>
+		</div>
+		
+		<div class="row panel giftEntry">
+			<div class="small-2 columns date">
+				<span class="month">Dec</span>
+				<span class="day">25</span>
+			</div>
+			<div class="small-10 columns content">
+				<a href="#" class="tiny button right">Plan Gifts</a>
+				<h3 class="title">Christmas</h3>
+				<p class="comment">Better start now.</p>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+<script>
+  document.write('<script src=js/vendor/'
+    + ('__proto__' in {} ? 'zepto' : 'jquery')
+    + '.js><\/script>');
+</script>
+<script src="js/foundation.min.js"></script>
+
+<script>
+$(document).foundation();
+</script>
+</body>
+</html>
