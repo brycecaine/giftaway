@@ -1,3 +1,4 @@
+import sys
 """
 WSGI config for giftaway project.
 
@@ -30,3 +31,5 @@ application = get_wsgi_application()
 # Apply WSGI middleware here.
 # from helloworld.wsgi import HelloWorldApplication
 # application = HelloWorldApplication(application)
+
+sys.path.append('/giftaway')
