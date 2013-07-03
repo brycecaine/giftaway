@@ -33,3 +33,4 @@ application = get_wsgi_application()
 # application = HelloWorldApplication(application)
 
 sys.path.append('/giftaway')
+sys.path.append('/giftaway/settings')
