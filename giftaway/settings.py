@@ -71,7 +71,7 @@ PROJECT_DIR = os.path.join(PROJECT_ROOT,'../giftplanner')
 # Example: "/var/www/example.com/static/"
 # STATIC_ROOT = ''
 # STATIC_ROOT = os.path.join(PROJECT_PATH, 'static')
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'staticfiles/')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static/')
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
