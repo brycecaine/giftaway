@@ -7,6 +7,9 @@ class Occasion(models.Model):
 	day = models.IntegerField(blank=True, null=True)
 	rule = models.CharField(max_length=80, blank=True, null=True)
 
+	def __unicode__(self):
+		return self.description
+
 class Gift(models.Model):
 	giver = models.ForeignKey(User, related_name='gift_givers')
 	recipient = models.ForeignKey(User, related_name='gift_recipients')
@@ -21,12 +24,18 @@ class Gift(models.Model):
 	cost = models.DecimalField(max_digits=20, decimal_places=2, blank=True, null=True)
 	recipient_liked = models.IntegerField(blank=True, null=True)
 
+	def __unicode__(self):
+		return '{0} (to {1} from {2})'.format(self.description, self.giver, self.recipient)
+
 class Idea(models.Model):
 	giver = models.ForeignKey(User, related_name='idea_givers')
 	recipient = models.ForeignKey(User, related_name='idea_recipients')
 	occasion = models.ForeignKey(Occasion, blank=True, null=True)
 	occasion_date = models.DateField(blank=True, null=True)
 	description = models.CharField(max_length=255)
+
+	def __unicode__(self):
+		return '{0} (to {1} from {2})'.format(self.description, self.giver, self.recipient)
 
 class Person(User):
 	birthday = models.DateField(blank=True, null=True)
