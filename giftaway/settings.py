@@ -63,7 +63,7 @@ MEDIA_URL = ''
 
 # Bryce added... hmm
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-PROJECT_DIR = os.path.join(PROJECT_ROOT,'../giftplanner')
+PROJECT_DIR = os.path.join(PROJECT_ROOT,'../')
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -82,7 +82,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, 'static/'),
+    os.path.join(PROJECT_DIR, 'static/'),
 )
 
 # List of finder classes that know how to find static files in
