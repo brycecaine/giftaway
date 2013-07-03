@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from giftplanner.api import GiftResource
+from giftplanner.api import GiftResource, OccasionResource, IdeaResource, PersonResource
 import settings
 
 # Uncomment the next two lines to enable the admin:
@@ -7,6 +7,9 @@ from django.contrib import admin
 admin.autodiscover()
 
 gift_resource = GiftResource()
+occasion_resource = OccasionResource()
+idea_resource = IdeaResource()
+person_resource = PersonResource()
 
 urlpatterns = patterns('',
     url(r'^$', 'giftplanner.views.home', name='home'),
@@ -23,5 +26,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     (r'^api/', include(gift_resource.urls)),
+    (r'^api/', include(occasion_resource.urls)),
+    (r'^api/', include(idea_resource.urls)),
+    (r'^api/', include(person_resource.urls)),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )
