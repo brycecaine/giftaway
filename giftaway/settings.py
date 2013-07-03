@@ -61,7 +61,7 @@ MEDIA_ROOT = ''
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = ''
 
-# Bryce added
+# Bryce added... hmm
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 PROJECT_DIR = os.path.join(PROJECT_ROOT,'../giftplanner')
 
