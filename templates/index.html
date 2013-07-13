@@ -145,31 +145,19 @@
 	
 	<div class="large-9 columns">
 	
-		<div class="row panel giftEntry">
-			<div class="small-2 columns date">
-				<span class="month">Aug</span>
-				<span class="day">20</span>
+		{% for opportunity in opportunities %}
+			<div class="row panel opportunityEntry">
+				<div class="small-2 columns date">
+					<span class="month">{{ opportunity.opportunity_date|date:"M" }}</span>
+					<span class="day">{{ opportunity.opportunity_date|date:"j" }}</span>
+				</div>
+				<div class="small-10 columns content">
+					<a href="#" class="tiny button right">Plan Gifts</a>
+					<h3 class="title">{{ opportunity.name }}</h3>
+				</div>
 			</div>
-			<div class="small-10 columns content">
-				<a href="#" class="tiny button right">Plan Gifts</a>
-				<h3 class="title">Kathy's Birthday</h3>
-				<p class="comment">Don't forget... late gifts make people cry. :)</p>
+		{% endfor %}
 				
-			</div>
-		</div>
-		
-		<div class="row panel giftEntry">
-			<div class="small-2 columns date">
-				<span class="month">Dec</span>
-				<span class="day">25</span>
-			</div>
-			<div class="small-10 columns content">
-				<a href="#" class="tiny button right">Plan Gifts</a>
-				<h3 class="title">Christmas</h3>
-				<p class="comment">Better start now.</p>
-			</div>
-		</div>
-		
 	</div>
 </div>
 
