@@ -1,23 +1,34 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-class Occasion(models.Model):
-	description = models.CharField(max_length=255)
-	month = models.CharField(max_length=12)
+class Holiday(models.Model):
+	name = models.CharField(max_length=255)
+	month = models.IntegerField()
 	day = models.IntegerField(blank=True, null=True)
-	rule = models.CharField(max_length=80, blank=True, null=True)
+	weekday = models.IntegerField(blank=True, null=True)
+	ordinal = models.IntegerField(blank=True, null=True)
 
 	def __unicode__(self):
-		return self.description
+		return '{0}'.format(self.name)
+
+class Occasion(models.Model):
+	giver = models.ForeignKey(User, related_name='occasion_givers')
+	recipient = models.ForeignKey(User, related_name='occasion_recipients')
+	event = models.CharField(max_length=255)
+	event_date = models.DateField(blank=True, null=True)
+
+	def __unicode__(self):
+		return '{0}\'s {1} ({2})'.format(self.recipient, self.event, self.giver)
 
 class Gift(models.Model):
 	giver = models.ForeignKey(User, related_name='gift_givers')
 	recipient = models.ForeignKey(User, related_name='gift_recipients')
 	occasion = models.ForeignKey(Occasion, blank=True, null=True)
 	occasion_date = models.DateField(blank=True, null=True)
-	order_date = models.DateField(blank=True, null=True)
+	name = models.CharField(max_length=255)
+	idea = models.BooleanField()
+	purchase_date = models.DateField(blank=True, null=True)
 	delivery_date = models.DateField(blank=True, null=True)
-	description = models.CharField(max_length=255)
 	merchant = models.CharField(max_length=80, blank=True, null=True)
 	url = models.URLField(blank=True, null=True)
 	tracking_number = models.CharField(max_length=255, blank=True, null=True)
@@ -25,18 +36,18 @@ class Gift(models.Model):
 	recipient_liked = models.IntegerField(blank=True, null=True)
 
 	def __unicode__(self):
-		return '{0} (to {1} from {2})'.format(self.description, self.giver, self.recipient)
+		return '{0} (to {1} from {2})'.format(self.name, self.giver, self.recipient)
 
-class Idea(models.Model):
-	giver = models.ForeignKey(User, related_name='idea_givers')
-	recipient = models.ForeignKey(User, related_name='idea_recipients')
-	occasion = models.ForeignKey(Occasion, blank=True, null=True)
-	occasion_date = models.DateField(blank=True, null=True)
-	description = models.CharField(max_length=255)
+class Interest(User):
+	giver = models.ForeignKey(User, related_name='interest_givers')
+	recipient = models.ForeignKey(User, related_name='interest_recipients')
+	name = models.CharField(max_length=255)
+	interest_date = models.DateField(blank=True, null=True)
 
 	def __unicode__(self):
-		return '{0} (to {1} from {2})'.format(self.description, self.giver, self.recipient)
+		return '{0}: {1} ({2})'.format(self.recipient, self.name, self.giver)
 
-class Person(User):
-	birthday = models.DateField(blank=True, null=True)
-	interests = models.CharField(max_length=1000, blank=True, null=True)
+# So a user can choose what holidays show up in their opportunity list
+class GiverHoliday(models.Model):
+	giver = models.ForeignKey(User)
+	holiday = models.ForeignKey(Holiday)

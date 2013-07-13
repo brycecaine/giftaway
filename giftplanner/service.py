@@ -59,7 +59,7 @@ def calc_easter(year):
 def get_upcoming_occasion(occasion):
 	current_year = date.today().year
 
-	occasion_date = date(current_year, occasion['date'].month, occasion['date'].day)
+	occasion_date = date(current_year, occasion['event_date'].month, occasion['event_date'].day)
 
 	if occasion_date < date.today():
 		occasion_date = date(current_year + 1, occasion_date.month, occasion_date.day)

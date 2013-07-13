@@ -1,22 +1,27 @@
 from tastypie.resources import ModelResource
-from giftplanner.models import Gift, Occasion, Idea, Person
+from giftplanner.models import Holiday, Occasion, Gift, Interest, GiverHoliday
 
-class GiftResource(ModelResource):
+class HolidayResource(ModelResource):
     class Meta:
-        queryset = Gift.objects.all()
-        resource_name = 'gift'
+        queryset = Holiday.objects.all()
+        resource_name = 'holiday'
 
 class OccasionResource(ModelResource):
     class Meta:
         queryset = Occasion.objects.all()
         resource_name = 'occasion'
 
-class IdeaResource(ModelResource):
+class GiftResource(ModelResource):
     class Meta:
-        queryset = Idea.objects.all()
-        resource_name = 'idea'
+        queryset = Gift.objects.all()
+        resource_name = 'gift'
 
-class PersonResource(ModelResource):
+class InterestResource(ModelResource):
     class Meta:
-        queryset = Person.objects.all()
-        resource_name = 'person'
+        queryset = Interest.objects.all()
+        resource_name = 'interest'
+
+class GiverHolidayResource(ModelResource):
+    class Meta:
+        queryset = GiverHoliday.objects.all()
+        resource_name = 'giverholiday'
