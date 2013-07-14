@@ -11,12 +11,12 @@ DEBUG = True # For now; but change this to False when live
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'giftaway_db',                      # Or path to database file if using sqlite3.
+        'NAME': 'da4ijbl7jbetoe',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'cainebryce',
-        'PASSWORD': 'giftaway765',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
+        'USER': 'racaqekjscvyhx',
+        'PASSWORD': 'ZKPa-IpQKLb_YFF1iJlwkAM-Pl',
+        'HOST': 'ec2-54-227-255-156.compute-1.amazonaws.com',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '5432',                      # Set to empty string for default.
     }
 }
 
